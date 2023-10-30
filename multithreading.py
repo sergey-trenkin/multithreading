@@ -20,12 +20,10 @@ urls = [
 ]
 
 start = time.time()
-# with ThreadPoolExecutor(7) as executor:
-#   for i in range(2):
-#     executor.map(print, urls)
-for i in range(14):
-  print(urls[i])
-
+with ThreadPoolExecutor(7) as executor:
+  for i in range(2):
+    executor.map(print, urls)
+    
 end = time.time()
 print(end - start)
 
