@@ -1,4 +1,3 @@
-import time
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
@@ -15,16 +14,9 @@ urls = [
   'https://docs.python.org/3/distributing/index.html',
   'https://docs.python.org/3/extending/index.html',
   'https://docs.python.org/3/c-api/index.html',
-  'https://docs.python.org/3/faq/index.html',
-  'https://sokolov.ru/jewelry-catalog/rings/signet_rings/'
-]
-
-start = time.time()
-with ThreadPoolExecutor(7) as executor:
-  for i in range(2):
-    executor.map(print, urls)
-    
-end = time.time()
-print(end - start)
+  'https://docs.python.org/3/faq/index.html'
+  ]
 
 
+with ThreadPoolExecutor(4) as executor:
+    results = executor.map(urllib.request.urlopen, urls)
